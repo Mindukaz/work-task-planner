@@ -1,0 +1,1 @@
+// this file will have a fcuntion for setting up the app state on app startup every time.

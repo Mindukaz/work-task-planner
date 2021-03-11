@@ -1,17 +1,28 @@
 import React from 'react';
-import { StyleSheet, Text, View, ScrollView} from 'react-native';
+import { StyleSheet} from 'react-native';
+import { connect } from 'react-redux'
 
-export default function DisplayView() {
+import Week from './Week'
+import WeekFinished from './WeekFinished'
+import Configuration from './Configuration'
+
+import store from '../redux/store';
+import * as views from '../js/constants';
 
 
-  return (
-    <ScrollView style={styles.container}>
-      <Text>This will pick and display bertween the 3 main screens</Text>
-      <Text>This will pick and display bertween the 3 main screens</Text>
-      <Text>This will pick and display bertween the 3 main screens</Text>
-      <Text>This will pick and display bertween the 3 main screens</Text>
-    </ScrollView>
-  );
+
+export function DisplayView() {
+
+  switch (store.getState().view){
+    case views.TASK_VIEW:
+      return (<Week />)
+      
+    case views.F_TASK_VIEW:
+      return (<WeekFinished />)
+      
+    case views.CONFIG_VIEw:
+      return (<Configuration />) 
+  }
 }
 
 const styles = StyleSheet.create({
@@ -20,3 +31,14 @@ const styles = StyleSheet.create({
     backgroundColor: 'green',
   },
 });
+
+
+// THIS FUNCTION NEEDS TO MAP REDUX STATE TO A 
+// LOCAL COMPONENT PROP. THIS WAY, WHEN THE STORE 
+// UPDATES, IT WILL UPDATE THE PROP, WHICH WILL
+// CAUSE THE COMPONENT TO RERENDER.
+function mapStateToProps(state, ownProps){
+  return {}
+}
+
+export default connect(mapStateToProps)(DisplayView)

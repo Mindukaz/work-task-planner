@@ -1,6 +1,11 @@
 import React from 'react';
 import { StyleSheet, Text, View, Button} from 'react-native';
 
+import { selectView } from '../redux/actions'
+import store from '../redux/store';
+
+import * as views from '../js/constants'
+
 export default function NavigationBar() {
 
   
@@ -13,7 +18,7 @@ export default function NavigationBar() {
       <Button 
         title="Tasks"
         color="#121212"
-        onPress = {() => console.log("Task button")}
+        onPress = { () => store.dispatch(selectView(views.TASK_VIEW))}
       />
       </View>
       
@@ -21,7 +26,7 @@ export default function NavigationBar() {
       <Button 
         title="Finished Tasks"
         color="#121212"
-        onPress = {() => console.log("finito button")}
+        onPress = { () => store.dispatch(selectView(views.F_TASK_VIEW))}
       />
       </View>
       
@@ -29,12 +34,9 @@ export default function NavigationBar() {
       <Button 
         title="Config"
         color="#121212"
-        onPress = {() => console.log("conf")}
+        onPress = { () => store.dispatch(selectView(views.CONFIG_VIEw))}
       />
       </View>
-
-      
-
 
     </View>
   );
