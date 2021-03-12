@@ -11,7 +11,7 @@ import * as views from '../js/constants';
 
 
 
-export function DisplayView() {
+export function DisplayView(props) {
 
   switch (store.getState().view){
     case views.TASK_VIEW:
@@ -28,17 +28,14 @@ export function DisplayView() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'green',
   },
 });
 
 
-// THIS FUNCTION NEEDS TO MAP REDUX STATE TO A 
-// LOCAL COMPONENT PROP. THIS WAY, WHEN THE STORE 
-// UPDATES, IT WILL UPDATE THE PROP, WHICH WILL
-// CAUSE THE COMPONENT TO RERENDER.
 function mapStateToProps(state, ownProps){
-  return {}
+  return {
+    view: state.view
+  }
 }
 
 export default connect(mapStateToProps)(DisplayView)

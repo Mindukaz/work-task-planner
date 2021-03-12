@@ -1,11 +1,10 @@
 import * as actions from '../js/constants';
+import initState from '../js/init_state'
 
 
 
-// for now state = [] is the initial state, but later this will be something
-// along the line of state = function_that_reads_state_from_file();
-
-export default function reducer(state = {view: actions.TASK_VIEW}, action) {
+export default function reducer(state = initState(), action) {
+    
     switch (action.type){
 
         // App navigation state
