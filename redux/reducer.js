@@ -1,5 +1,5 @@
 import * as actions from '../js/constants';
-import initState from '../js/init_state'
+import initState from '../js/state'
 
 
 
@@ -10,7 +10,18 @@ export default function reducer(state = initState(), action) {
         // App navigation state
 
         case actions.NAVIGATION_CLICK:
-            return {view : action.payload.view}
+            return {
+                ...state,
+                view : action.payload.view
+            }
+
+        // Task management
+
+        case actions.FINISH_TASK_CLICK:
+            return {
+                ...state,
+
+            }
         
         default:
             return state;

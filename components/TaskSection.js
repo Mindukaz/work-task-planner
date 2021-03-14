@@ -6,8 +6,8 @@ import Task from './Task'
 export default function TaskSection(props) {
 
 
-    const tasks = props.tasks.tasks.map( task =>
-        <Task name={task} colour={props.tasks.colour}/>
+    const tasks = props.tasks.map( task =>
+        <Task name={task} location={props.name} finished={props.finished}/>
     )
 
     return (
@@ -16,16 +16,17 @@ export default function TaskSection(props) {
 
             <Text style= {
                 {
-                    color: props.tasks.colour,
+                    color: 'orange',
                     marginBottom: 10,
-                    fontSize: 25
+                    fontSize: 25,
+                    marginLeft: 10
                 }}> 
 
 
                 {props.name}
             </Text>
             
-            
+            <View style={styles.border}></View>
             
             {tasks}
         </View>
@@ -33,7 +34,15 @@ export default function TaskSection(props) {
 }
 
 const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    marginBottom: 25  }
+    container: {
+        flex: 1,
+        marginBottom: 25  
+    },
+
+    border: {
+        borderBottomColor:'white',
+        borderBottomWidth: 1,
+        marginBottom: 10
+    }
+
 });

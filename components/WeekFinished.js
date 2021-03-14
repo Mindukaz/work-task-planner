@@ -1,24 +1,25 @@
 import React from 'react';
 import { StyleSheet, Text, ScrollView} from 'react-native';
+import { connect } from 'react-redux'
+import TaskSection from './TaskSection'
 
 
-// THIS SECTION WILL BE ALOMOS A COMPLETE COPY OF THE 
-// TASKS COMPONENT. JUST ONE VARIATION. THE SLIDE FUNTION WILL
-// DO THE OPPOSITE
+// THIS IS WHERE I STOPPED. IMPLEMENTING FUCNTIONALITY SO SWITCH TASKS
+// BETWEEN FINISHED AND UNFINISHED. LAST THING I DID WAS IMPLEMENT
+// THE ACTION FUNCTION. CONFUSION AROSE THERE. START FROM THERE.
 
 
-export default function WeekFinished() {
+export function WeekFinished(props) {
+
   return (
     <ScrollView style={styles.container}>
-      <Text>Monday</Text>
-      <Text>Tuesday</Text>
-      <Text>Wednesday</Text>
-      <Text>Thursday</Text>
-      <Text>Friday</Text>
-      <Text>Saturday</Text>
-      <Text>Sunday</Text>
-
-      <Text>This section will show what tasks got done on what days</Text>
+      <TaskSection name={"Monday"} tasks={props.monday} finished={true}/>
+      <TaskSection name={"Tuesday"} tasks={props.tuesday} finished={true} />
+      <TaskSection name={"Wednesday"} tasks={props.wednesday} finished={true} />
+      <TaskSection name={"Thursday"} tasks={props.thursday} finished={true} />
+      <TaskSection name={"Friday"} tasks={props.friday} finished={true} />
+      <TaskSection name={"Saturday"} tasks={props.saturday} finished={true} />
+      <TaskSection name={"Sunday"} tasks={props.sunday} finished={true} />
     </ScrollView>
   );
 }
@@ -26,7 +27,21 @@ export default function WeekFinished() {
 const styles = StyleSheet.create({
   container: {
     flex: 1,
-    backgroundColor: 'green',
+    backgroundColor: '#202020',
     
   },
 });
+
+function mapStateToProps(state){
+  return {
+    monday: state.finishedTasks.monday,
+    tuesday: state.finishedTasks.tuesday,
+    wednesday: state.finishedTasks.wednesday,
+    thursday: state.finishedTasks.thursday,
+    friday: state.finishedTasks.friday,
+    saturday: state.finishedTasks.saturday,
+    sunday: state.finishedTasks.sunday
+  }
+}
+
+export default connect(mapStateToProps)(WeekFinished)

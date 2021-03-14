@@ -1,48 +1,28 @@
 import React from 'react';
-import { StyleSheet, Text, ScrollView} from 'react-native';
+import { StyleSheet, ScrollView} from 'react-native';
+import { connect } from 'react-redux'
 
 import TaskSection from './TaskSection'
+import * as labels from '../js/constants';
 
 
-// this function will loop through a list of tasks
-// and it will only render a section when it has tasks in it.
 
+export function Week(props) {
 
-export default function Week() {
+  const newList = props.custom.concat(props.standalone)
 
-
-  // TEST DATA. THIS WILL BE REPLACED WITH ACTUAL DATA 
-  // WITH FILE I/O. 
-
-
-  const t = {
-
-    standalone: {
-      colour: "red",
-      tasks: ["tidy up hoses", "fix hose puncture", "palettes", "hose adaptors"]
-    },
-
-    daily: {
-      colour: "green",
-      tasks: ["dustpans", "oil bycket", "vats", "brooms and brushes"]
-    },
-
-    weekly: {
-      colour: "blue",
-      tasks: ["roof", "clean freezer", "powerwash corral", 
-              "powerwash drivethru", "powerwash patio", "clean monitors",
-              "step ladders", "external bins", "compactor", "D/T booths", 
-              "OSCAR", "chiller", "stockroom"]
+  function checkTasks(title, list) {
+    if (list.length > 0) {
+      return <TaskSection name={title} tasks={list} finished={false} />
     }
+    return null
   }
-
-  // REMOVE THE ABOVE LATER
 
   return (
     <ScrollView style={styles.container}>
-      <TaskSection name="Standalone Tasks" tasks={t.standalone} />
-      <TaskSection name="Daily Tasks" tasks={t.daily} />
-      <TaskSection name="Weekly Tasks" tasks={t.weekly} />
+      {checkTasks(labels.SINGLE, newList)}
+      {checkTasks(labels.DAILY, props.daily)}
+      {checkTasks(labels.WEEKLY, props.weekly)}
     </ScrollView>
   );
 }
@@ -53,3 +33,14 @@ const styles = StyleSheet.create({
     backgroundColor: '#202020',
   },
 });
+
+function mapStateToProps(state){
+  return {
+    standalone: state.tasks.standalone,
+    daily: state.tasks.daily,
+    weekly: state.tasks.weekly,
+    custom: state.tasks.custom
+  }
+}
+
+export default connect(mapStateToProps)(Week)

@@ -11,7 +11,7 @@ import * as views from '../js/constants';
 
 
 
-export function DisplayView(props) {
+export function DisplayView() {
 
   switch (store.getState().view){
     case views.TASK_VIEW:
@@ -32,7 +32,7 @@ const styles = StyleSheet.create({
 });
 
 
-function mapStateToProps(state, ownProps){
+function mapStateToProps(state){
   return {
     view: state.view
   }
