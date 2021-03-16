@@ -1,0 +1,3 @@
+# work-task-planner
+
+personal project to create a task planning and managing app for my current job......
