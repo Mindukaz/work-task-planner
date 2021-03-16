@@ -4,6 +4,7 @@ import { connect } from 'react-redux'
 
 import TaskSection from './TaskSection'
 import * as labels from '../js/constants';
+import { finishTask } from '../redux/actions'
 
 
 
@@ -13,7 +14,7 @@ export function Week(props) {
 
   function checkTasks(title, list) {
     if (list.length > 0) {
-      return <TaskSection name={title} tasks={list} finished={false} />
+      return <TaskSection name={title} tasks={list} function={finishTask} />
     }
     return null
   }

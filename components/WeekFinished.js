@@ -2,6 +2,7 @@ import React from 'react';
 import { StyleSheet, Text, ScrollView} from 'react-native';
 import { connect } from 'react-redux'
 import TaskSection from './TaskSection'
+import { unfinishTask } from '../redux/actions'
 
 
 // THIS IS WHERE I STOPPED. IMPLEMENTING FUCNTIONALITY SO SWITCH TASKS
@@ -13,13 +14,13 @@ export function WeekFinished(props) {
 
   return (
     <ScrollView style={styles.container}>
-      <TaskSection name={"Monday"} tasks={props.monday} finished={true}/>
-      <TaskSection name={"Tuesday"} tasks={props.tuesday} finished={true} />
-      <TaskSection name={"Wednesday"} tasks={props.wednesday} finished={true} />
-      <TaskSection name={"Thursday"} tasks={props.thursday} finished={true} />
-      <TaskSection name={"Friday"} tasks={props.friday} finished={true} />
-      <TaskSection name={"Saturday"} tasks={props.saturday} finished={true} />
-      <TaskSection name={"Sunday"} tasks={props.sunday} finished={true} />
+      <TaskSection name={"Monday"} tasks={props.monday} function={unfinishTask}/>
+      <TaskSection name={"Tuesday"} tasks={props.tuesday} function={unfinishTask} />
+      <TaskSection name={"Wednesday"} tasks={props.wednesday} function={unfinishTask} />
+      <TaskSection name={"Thursday"} tasks={props.thursday} function={unfinishTask} />
+      <TaskSection name={"Friday"} tasks={props.friday} function={unfinishTask} />
+      <TaskSection name={"Saturday"} tasks={props.saturday} function={unfinishTask} />
+      <TaskSection name={"Sunday"} tasks={props.sunday} function={unfinishTask} />
     </ScrollView>
   );
 }

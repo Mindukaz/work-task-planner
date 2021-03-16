@@ -7,7 +7,11 @@ export default function TaskSection(props) {
 
 
     const tasks = props.tasks.map( task =>
-        <Task name={task} location={props.name} finished={props.finished}/>
+        <Task 
+        name={task.name} 
+        location={props.name} 
+        function={props.function}
+        />
     )
 
     return (

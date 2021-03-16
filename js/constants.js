@@ -8,11 +8,15 @@ export const CONFIG_VIEw = "config"
 
 
 
-// General Labels
+// Task intervals
 
-export const SINGLE = "Standalone"
-export const DAILY = "Daily"
-export const WEEKLY = "Weekly"
+export const ONCE = "O"
+export const DAILY = "D"
+export const WEEKLY = "W"
+export const MONYHLY = "M"
+export const MONTHLY3 = "3M"
+export const MONTHLY6 = "6M"
+export const YEARLY = "Y"
 
 
 
@@ -21,5 +25,7 @@ export const WEEKLY = "Weekly"
 export const NAVIGATION_CLICK = "nav"
 export const FINISH_TASK_CLICK = "finish_task"
 export const UN_FINISH_TASK_CLICK = "task_not_finished"
+export const EDIT_TASK = "edit_task"
+export const ADD_TASK = "add_task"
 
 
